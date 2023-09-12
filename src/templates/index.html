@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Build a simple web app with HTMX and WebSockets</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8">
+
+    <h1 class="text-4xl underline decoration-gray-200 decoration-4 mb-8" style="color:#c00077">demo.osull.com</h1>
+
+    <div hx-ext="ws" ws-connect="/ws">
+
+        <form id="form_create" ws-send class="flex items-center gap-4 mb-8">
+            <input type="hidden" name="action" value="create">
+            <input type="url" name="url" class="border border-blue-300 rounded p-2 w-full max-w-4xl">
+            <div>
+                <button class="text-lg text-white bg-blue-600 hover:bg-blue-800 px-2 py-1 rounded-xl select-none"
+                    type="submit">Add&nbsp;link</button>
+            </div>
+        </form>
+
+        <div id="main"></div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{#
+link:Link
+#}
+<div id="{{ link.div_id }}" class="flex flex-wrap md:flex-nowrap gap-x-4 mb-6">
+
+    <div class="font-mono text-xs md:text-center shrink-0" style="width:5rem;">
+        {{link.added_time}} <br />
+        {{link.added_date}}
+    </div>
+    <div class="text-xl" style="width:1.75rem;">
+        {{link.user_emoji}}
+    </div>
+    <form ws-send>
+        <input type="hidden" name="id" value="{{ link.id }}">
+        <button name="action" value="delete"
+            class="text-white bg-red-600 hover:bg-red-800 px-1.5 pb-0.5 rounded-xl select-none">
+            Delete
+        </button>
+    </form>
+    <div class="w-full">
+        <a href="{{ link.url }}" rel="noreferrer" class="text-blue-600">
+            {{ link.display_name }}
+        </a>
+    </div>
+
+</div>
