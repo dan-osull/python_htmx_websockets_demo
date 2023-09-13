@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "python_fastapi_websocket_link_site"
+name = "python_websockets_htmx_demo"
 version = "0.1.0"
 description = ""
 authors = ["Dan O'Sullivan <dan@osull.com>"]
-readme = "README.md"
+readme = "readme.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"

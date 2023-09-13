@@ -3,20 +3,17 @@ from asyncio import create_task
 from enum import StrEnum, auto
 from typing import Any, Awaitable, Callable
 from uuid import UUID
+
+import tortoise.connection
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from pydantic import AnyHttpUrl, BaseModel, ValidationError
 from tortoise import Tortoise
-import tortoise.connection
 
-from .emoji import get_random_emoji, Emoji
 from .config import SQLITE_DB_URL, TEMPLATES_PATH
 from .db import Link
-from .html import (
-    render_append_html,
-    render_delete_html,
-    render_all_links_html,
-)
+from .emoji import Emoji, get_random_emoji
+from .html import render_all_links_html, render_append_html, render_delete_html
 from .http_client import save_and_broadcast_new_link_url_and_title
 from .logging import log
 from .websockets import ConnectionManager

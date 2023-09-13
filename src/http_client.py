@@ -1,16 +1,14 @@
-from concurrent.futures import ProcessPoolExecutor
 from asyncio import get_running_loop
+from concurrent.futures import ProcessPoolExecutor
 
 import httpx
 from bs4 import BeautifulSoup, SoupStrainer
 from httpx import HTTPError
 
-from .websockets import ConnectionManager
-
 from .db import Link
 from .html import render_link_html
-
 from .logging import log
+from .websockets import ConnectionManager
 
 process_pool = ProcessPoolExecutor(max_workers=1)
 

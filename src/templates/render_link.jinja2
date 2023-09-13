@@ -11,9 +11,9 @@ link:Link
         {{link.user_emoji}}
     </div>
     <form ws-send>
+        <input type="hidden" name="action" value="delete">
         <input type="hidden" name="id" value="{{ link.id }}">
-        <button name="action" value="delete"
-            class="text-white bg-red-600 hover:bg-red-800 px-1.5 pb-0.5 rounded-xl select-none">
+        <button class="text-white bg-red-600 hover:bg-red-800 px-1.5 pb-0.5 rounded-xl select-none">
             Delete
         </button>
     </form>
