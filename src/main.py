@@ -65,11 +65,13 @@ class ApiAction(StrEnum):
     DELETE = auto()
 
 
+# Register functions for API actions
 ApiActionFunc = Callable[[RequestDict, ConnectionManager, Emoji], Awaitable[None]]
 API_ACTION_FUNC_TABLE: dict[ApiAction, ApiActionFunc] = {
     ApiAction.CREATE: create_link,
     ApiAction.DELETE: delete_link,
 }
+
 app = FastAPI()
 connection_manager = ConnectionManager()
 
@@ -119,7 +121,7 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
                 # Run the function for the requested action
                 await function(request, connection_manager, user_emoji)
             except ValidationError as exception:
-                # Pydantic error - triggered if Link URL is invalid
+                # Pydantic error - triggered e.g. if Link URL is invalid
                 log.warning(exception)
 
     except WebSocketDisconnect as exception:
@@ -128,5 +130,5 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
             # Codes seen in normal operation:
             # 1001 Going away
             # 1006 Closed abnormally
-            # https://www.rfc-editor.org/rfc/rfc6455#section-7.4.1
+            # https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1
             raise exception
