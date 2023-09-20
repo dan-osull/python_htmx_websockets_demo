@@ -9,7 +9,7 @@ class Emoji(str):
 
 
 # Emojis copied from https://c.r74n.com/emoji
-EMOJI_PATH = TEMPLATES_PATH = Path.cwd() / Path("src") / "emoji.txt"
+EMOJI_PATH = Path.cwd() / Path("src") / "emoji.txt"
 with open(EMOJI_PATH, "r") as file:
     ALL_EMOJIS = file.read()
 
